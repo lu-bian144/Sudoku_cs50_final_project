@@ -20,4 +20,3 @@ while True:
         grid_frame.grid_columnconfigure(i, weight=1)
     grid_number=0
 
-window.mainloop()
