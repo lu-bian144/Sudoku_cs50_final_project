@@ -18,6 +18,8 @@ def create_grid(grid_width, grid_height, grid_cell_size, square_outline, canvas)
         for j in range (2, grid_height, grid_cell_size): # (starting value, finish value, skip of this many per iteration (0, 40, 80 ...))
             canvas.create_rectangle( i, j, i+grid_cell_size, j+grid_cell_size, width=1, outline= "black", fill="white")
             square_id.append(f"{round(i/grid_cell_size)+1}, {round(j/grid_cell_size)+1}")
+            text= Entry(canvas, justify="center", font="Arial 20", insertontime=0)
+            canvas.create_window((i+i+grid_cell_size)/2 ,(j+j+grid_cell_size)/2, window=text, width= grid_cell_size-2, height= grid_cell_size-2)
     canvas.pack(expand=True)# line above: coordinate of the upper left corner (ithinkso), coordinates of bottom right corner
     while l < 10:
         canvas.create_line((square_outline*l)+2, 2, (square_outline*l)+2, grid_height+2, width=3, fill="blueviolet")
