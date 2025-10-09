@@ -9,12 +9,15 @@ def main():
     cell_size = 50
     big_square_outline = (cell_size)*3
     create_grid(ancho, height, cell_size, big_square_outline, grid)
+    ids = create_grid(ancho, height, cell_size, big_square_outline, grid)
+    print(ids)
 def create_grid(grid_width, grid_height, grid_cell_size, square_outline, canvas):
-    
+    square_id = []
     l=0
     for i in range (2, grid_width, grid_cell_size):# you can then asign and i to each square
         for j in range (2, grid_height, grid_cell_size): # (starting value, finish value, skip of this many per iteration (0, 40, 80 ...))
             canvas.create_rectangle( i, j, i+grid_cell_size, j+grid_cell_size, width=1, outline= "black", fill="white")
+            square_id.append(f"{round(i/grid_cell_size)+1}, {round(j/grid_cell_size)+1}")
     canvas.pack(expand=True)# line above: coordinate of the upper left corner (ithinkso), coordinates of bottom right corner
     while l < 10:
         canvas.create_line((square_outline*l)+2, 2, (square_outline*l)+2, grid_height+2, width=3, fill="blueviolet")
@@ -22,6 +25,7 @@ def create_grid(grid_width, grid_height, grid_cell_size, square_outline, canvas)
         l+=1
     canvas.create_line(grid_width+2,0,grid_width+2,grid_height+2, width=3, fill="blueviolet")
     canvas.create_line(0,grid_height+2,grid_width+2,grid_height+2,width=3, fill="blueviolet")
+    return square_id
 main()
 window.mainloop()
 #if id [-1] == row/column number:
